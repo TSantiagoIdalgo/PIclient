@@ -1,0 +1,35 @@
+
+.modal {
+    position: absolute;
+    display: flex;
+    background-color: #ccc;
+    right: 0;
+    padding: 15px;
+    background-color: #111;
+    color: #fff;
+    border-radius: 4%;
+}
+
+.modal img {
+    width: 75px;
+}
+
+.modal h1 {
+    font-size: 20px;
+}
+.modal h2 {
+    font-size: 20px;
+}
+
+.modal button {
+    color: #aaa;
+    font-size: 12px;
+    background-color: transparent;
+    border: none;
+    text-align: right;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    color: #8A2BE2;
+}

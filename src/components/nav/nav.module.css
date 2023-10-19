@@ -1,0 +1,34 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 50px;
+}
+
+.nav img {
+    filter: grayscale(.7);
+    cursor: pointer;
+}
+
+.nav img:hover {
+    filter: hue-rotate(100deg);
+}
+
+.nav_login {
+    display: flex;
+    align-items: center;
+}
+
+.nav_routes {
+    margin-right: 50px;
+    text-decoration: none;
+    color: #ccc;
+    border: none;
+    transition: border 100ms ease-in;
+    border-bottom: 2px solid transparent;
+}
+
+.nav_routes:hover {
+    border-bottom: 1px solid #8A2BE2;;
+}

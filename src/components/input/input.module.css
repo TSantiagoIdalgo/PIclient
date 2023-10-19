@@ -1,0 +1,49 @@
+.group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.input {
+    position: relative;
+    width: 300px;
+    height: 35px;
+    margin: 10px;
+    border-radius: 4px;
+    border: none;
+    outline: 2px solid #aaa;
+    transition: outline 200ms ease-out;
+    padding-left: 10px;
+    background-color: transparent;
+    color: #ccc;
+}
+
+.label {
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+    transition: all 150ms ease-out;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #aaa;
+    font-size: 18px;
+}
+
+.input:hover + .label,
+.input:not(:placeholder-shown) + .label {
+    transform: translateY(-35px);
+}
+
+.input:hover, .input:not(:placeholder-shown){
+    outline-color: #8A2BE2;
+    transition: outline 200ms ease-in;
+}
+
+.group span {
+    color: #8A2BE2;
+    align-self: center;
+    top: 50px;
+    position: absolute;
+}
