@@ -5,6 +5,8 @@ import Register from './components/register/register'
 import Login from './components/login/login'
 import Main from './components/main/main'
 import Error from './components/error/error'
+import Activities from './components/activities/activities'
+import AddActivity from './components/activities/addActivity/addActivity'
 import './App.css'
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
           <Route path='*' element={<Error/>}/>
           {token === null ? <Route path='/login' element={<Login/>}/> : null}
           {token === null ? <Route path='/register' element={<Register/>}/> : null}
+          {token !== null ? <Route path='/addActivity' element={<AddActivity/>}/> : null}
+          <Route path='/activities' element={<Activities/>}/>
         </Routes>
       </div>
     </div>

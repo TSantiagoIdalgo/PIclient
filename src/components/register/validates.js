@@ -3,11 +3,10 @@ import axios from 'axios'
 const validate = async (input) => {
     const error = {}
     const search = await axios.get(`https://piback-end.onrender.com/users/${input.email}`)
-    if (search.status !== 204) error.email = 'Email in use'
 
-    if (input.userName.length <= 3) error.userName = 'name too short'
+    if (input.userName.length <= 3) error.userName = 'Name is too short'
 
-    if (input.userName.length >= 12) error.userName = 'name too loong'
+    if (input.userName.length >= 12) error.userName = 'Name is too loong'
 
     if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(input.email)) error.email = 'Wrong email'
     else if (search.status !== 202) error.email = 'Email in use'

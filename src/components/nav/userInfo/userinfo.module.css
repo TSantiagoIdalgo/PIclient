@@ -8,6 +8,7 @@
     background-color: #111;
     color: #fff;
     border-radius: 4%;
+    z-index: 1000;
 }
 
 .modal img {

@@ -1,0 +1,35 @@
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 80vh;
+    gap: 50px;
+}
+
+.add_template {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 280px;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    transition: all 50ms ease-in;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add_template_icon {
+    color: #ccc;
+    font-size: 35px;
+}
+
+.add_template:hover {
+    transform: scale(.9);
+}

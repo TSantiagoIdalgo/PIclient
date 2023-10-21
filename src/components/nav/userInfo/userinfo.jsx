@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import jwt_decode from 'jwt-decode';
 import Style from './userinfo.module.css'
 import Logged from '../../../assets/icon/user/access.png'
 
 export default function UserInfo () {
-    const navigate = useLocation()
+    const navigate = useNavigate()
     const [user, setUser] = useState({})
     const token = window.localStorage.getItem('USER_INFO')
     function loggout () {

@@ -17,8 +17,10 @@ export default function Login () {
       await axios.post('https://piback-end.onrender.com/users/login', user)
         .then(res => {
           if (res.status === 203) setError('Incorrect username or password')
-          if (res.status === 200) navigate('/activities')
-          window.localStorage.setItem('USER_INFO', JSON.stringify(res.data.token))
+          if (res.status === 200) {
+            navigate('/activities')
+            window.localStorage.setItem('USER_INFO', JSON.stringify(res.data.token))
+          }
         })
     }
     return (
