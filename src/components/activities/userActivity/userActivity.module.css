@@ -1,0 +1,40 @@
+.activity {
+    position: absolute;
+    width: 65vw;
+    min-height: 500px;
+    top: 10%;
+    left: 18%;
+    opacity: .9;
+    background-color: #0c052c;
+    border-radius: 20px;
+    z-index: 200;
+}
+
+.activity_info {
+    display: inline-block;
+    margin: 40px;
+    padding: 15px;
+    border: 2px solid #ccc;
+    color: #ccc;
+}
+
+.activity_button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    color: #ccc;
+    padding: 5px;
+    border: none;
+    outline: 2px solid #ccc;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.activity_info button {
+    margin-left: 45%;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: 2px solid #ccc;
+}

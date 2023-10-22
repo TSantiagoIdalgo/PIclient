@@ -47,7 +47,7 @@ export default function AddActivity () {
     },[dispatch])
     if (!create) {return (
         <div className={Style.background}>
-            <form className={Style.activity_form} onSubmit={onSubmit}>
+            <form className={Style.activity_form} onSubmit={onSubmit} autoComplete='off'>
                 <h1>Create your activity</h1>
                 <img src={icon} alt="icon" className={Style.activity_form_icon}/>
 
@@ -64,7 +64,7 @@ export default function AddActivity () {
               <div className={Style.activity_form_list}>
 
                 <div className={Style.activity_form_inp}>
-                    <input type="number" placeholder='difficulty' name='difficulty' onChange={inputOnChange}  min={1} max={5}/>
+                    <input type="number" placeholder='difficulty' name='difficulty' onChange={inputOnChange}/>
                     <span>{error?.difficulty}</span>
                 </div>
 
