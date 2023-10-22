@@ -1,0 +1,19 @@
+.form {
+    justify-self: self-start;
+}
+
+.search {
+    width: 35vw;
+    height: 25px;
+    outline: none;
+    padding-left: 10px;
+    color: #ccc;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    transition: border-bottom 100ms ease-in;
+}
+
+.search:focus {
+    border-bottom: 2px solid #8A2BE2;
+}

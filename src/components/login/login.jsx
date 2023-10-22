@@ -18,7 +18,7 @@ export default function Login () {
         .then(res => {
           if (res.status === 203) setError('Incorrect username or password')
           if (res.status === 200) {
-            navigate('/activities')
+            navigate('/')
             window.localStorage.setItem('USER_INFO', JSON.stringify(res.data.token))
           }
         })

@@ -64,7 +64,7 @@ export default function AddActivity () {
               <div className={Style.activity_form_list}>
 
                 <div className={Style.activity_form_inp}>
-                    <input type="number" placeholder='difficulty' name='difficulty' onChange={inputOnChange}/>
+                    <input type="number" placeholder='difficulty' name='difficulty' onChange={inputOnChange}  min={1} max={5}/>
                     <span>{error?.difficulty}</span>
                 </div>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Nav from './components/nav/nav'
 import Register from './components/register/register'
 import Login from './components/login/login'
@@ -7,10 +7,12 @@ import Main from './components/main/main'
 import Error from './components/error/error'
 import Activities from './components/activities/activities'
 import AddActivity from './components/activities/addActivity/addActivity'
+import Countries from './components/countries/countries'
 import './App.css'
 
 function App() {
   const token = window.localStorage.getItem('USER_INFO')
+  const [search, setSearch] = useState('')
   const [mouseMovement, setMouseMove] = useState({
     x: 0,
     y: 0
@@ -33,14 +35,15 @@ function App() {
   return (
     <div className='background'>
       <div className='cursor' style={{background: `radial-gradient(circle at ${mouseMovement.x}px ${mouseMovement.y}px, rgba(79, 70, 229, 0.25), #010101 100%)`}}>
-      <Nav/>
+      <Nav search={search} setSearch={setSearch}/>
         <Routes>
           <Route path='/' element={<Main/>}/>
           <Route path='*' element={<Error/>}/>
           {token === null ? <Route path='/login' element={<Login/>}/> : null}
           {token === null ? <Route path='/register' element={<Register/>}/> : null}
           {token !== null ? <Route path='/addActivity' element={<AddActivity/>}/> : null}
-          <Route path='/activities' element={<Activities/>}/>
+          {token !== null ? <Route path='/activities' element={<Activities/>}/> : null}
+          {token !== null ? <Route path='/countries' element={<Countries search={search}/>}/> : null}
         </Routes>
       </div>
     </div>

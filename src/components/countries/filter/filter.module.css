@@ -1,0 +1,25 @@
+.background {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    background-color: #0c052c;
+    width: 400px;
+    height: 350px;
+    margin: 15px;
+    right: 0;
+    border-radius: 12px;
+    opacity: .9;
+}
+
+.background select {
+    width: 80%;
+    margin-top: 30px;
+    height: 30px;
+}
+
+.background h1 {
+    color: #ccc;
+    margin-top: 20px;
+}
