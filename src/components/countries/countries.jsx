@@ -19,15 +19,14 @@ export default function Countries ({ search }) {
 
     useEffect(() => {
         dispatch(getAllCountries())
-    }, [])
+    }, [dispatch])
     useEffect(() => {
         const countriesSearched = country.filter((c) => {
             const name = search.toLowerCase()
             return c.name.toLowerCase().includes(name)
         })
         setCountries(countriesSearched)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[search])
+    },[search, country])
     
     return (
         <div>

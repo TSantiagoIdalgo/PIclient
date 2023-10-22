@@ -19,7 +19,7 @@ export default function Nav ({ search, setSearch }) {
     return (
         <header className={Style.nav}>
             <Link to='/'><img src={icon} alt="icon" width={60}/></Link>
-            {location.pathname === '/countries' 
+            {location.pathname === '/countries' && token !== null
             ? <SearchBar search={search} setSearch={setSearch}/> : null}  
             <div className={Style.nav_login}>  
             <Link to={`${token !== null ? '/countries' : '/login'}`} 

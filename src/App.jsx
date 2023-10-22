@@ -8,6 +8,7 @@ import Error from './components/error/error'
 import Activities from './components/activities/activities'
 import AddActivity from './components/activities/addActivity/addActivity'
 import Countries from './components/countries/countries'
+import Country from './components/countries/country/country'
 import './App.css'
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           {token !== null ? <Route path='/addActivity' element={<AddActivity/>}/> : null}
           {token !== null ? <Route path='/activities' element={<Activities/>}/> : null}
           {token !== null ? <Route path='/countries' element={<Countries search={search}/>}/> : null}
+          <Route path='/country/:id' element={<Country/>}/>
         </Routes>
       </div>
     </div>
