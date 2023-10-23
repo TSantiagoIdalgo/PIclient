@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import { useHandle } from '../../../hooks/commonHooks/useHandle'
 import { useOnSubmit } from '../../../hooks/addActivities/addActivity';
 import { UsefetchCountries } from '../../../services/countries/countries';
+import Added from './added/added';
 import jwt_decode from 'jwt-decode';
 import Style from './addActivity.module.css'
 import icon from '../../../assets/icon/icon.webp'
@@ -10,6 +11,7 @@ import icon from '../../../assets/icon/icon.webp'
 export default function AddActivity () {
     const token = window.localStorage.getItem('USER_INFO')
     const decodedToken = jwt_decode(token)
+    const [error, setError] = useState({})
     const [inp, setInp] = useState({
         id: [],
         name: '',
@@ -19,9 +21,7 @@ export default function AddActivity () {
         userId: decodedToken.email
     })
     const { state, changeState } = useHandle()
-    const { error } = useOnSubmit(changeState, inp)
     const { countries } = UsefetchCountries()
-    const navigate = useNavigate()
     function inputOnChange (e) {
         if (e.target.name === 'difficulty') {
             setInp({ ...inp, difficulty: parseInt(e.target.value)})
@@ -34,7 +34,8 @@ export default function AddActivity () {
     
     if (!state) {return (
         <div className={Style.background}>
-            <form className={Style.activity_form} onSubmit={(e) => e.preventDefault()} autoComplete='off'>
+            <form className={Style.activity_form} 
+            onSubmit={(e) => useOnSubmit(changeState, setError, inp, e)} autoComplete='off'>
                 <h1>Create your activity</h1>
                 <img src={icon} alt="icon" className={Style.activity_form_icon}/>
 
@@ -78,16 +79,5 @@ export default function AddActivity () {
                 <button className={Style.activity_form_button}>Create</button>
             </form>
         </div>
-    )} else {
-        return (
-          <div className={Style.background}>
-            <main className={Style.activity_form}>
-              <h1>The activity has been created</h1>
-              <button 
-              className={Style.activity_form_button} 
-              onClick={() => navigate('/activities')}>Return to activities</button>
-            </main>
-          </div>
-        )
-    }
+    )} else return <Added/>
 }

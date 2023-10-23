@@ -1,6 +1,6 @@
 export const useFilterByContinent = (country, setCountries, e) => {
     const filtered = country.filter((c) => {
-        return c.continent.includes(e.target.value )
+        return c.continent.includes(e.target.value)
     })
     setCountries(filtered)
 }

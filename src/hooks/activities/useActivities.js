@@ -11,6 +11,7 @@ export const useActivities = () => {
     useEffect(() => {
         dispatch(getAllActivities(decodedToken.email))
     }, [decodedToken.email, dispatch])
-
-    return {activities}
+    
+    if(activities.error === undefined) return { activities }
+    else return { activities: null }
 }

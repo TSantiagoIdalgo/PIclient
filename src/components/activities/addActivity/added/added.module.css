@@ -24,68 +24,6 @@
     color: #ccc;
 }
 
-span {
-    color: #8A2BE2;
-}
-.activity_form_icon {
-    position: absolute;
-    filter: grayscale(.7);
-    width: 80px;
-    height: 80px;
-    top: 0;
-    right: 0;
-    margin: 15px;
-}
-
-.activity_form_inp {
-    position: relative;
-}
-
-.activity_form_inp input {
-    height: 30px;
-    width: 370px;
-    border-radius: 8px;
-    border: none;
-    outline: 2px solid #000;
-    padding-left: 15px;
-    transition: outline 150ms ease-in;
-}
-
-.activity_form_inp span {
-    position: absolute;
-    width: 200px;
-    top: 30px;
-    left: 0;
-}
-
-.activity_form_select {
-    position: relative;
-}
-.activity_form_select select {
-    width: 100px;
-    height: 30px;
-}
-
-.activity_form_select span {
-    position: absolute;
-    width: 200px;
-    top: 30px;
-    left: 0;
-}
-
-.activity_form input:hover {
-    outline: 2px solid #8A2BE2;
-}
-
-.activity_form_list {
-    display: flex;
-    gap: 17px;
-}
-
-.activity_form_list input {
-    width: 80px;
-}
-
 .activity_form_button {
     height: 40px;
     width: 15vw;

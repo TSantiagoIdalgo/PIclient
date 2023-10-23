@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Registered from './registered/registered'
 import Style from './register.module.css'
 import axios from 'axios'
 import validate from './validates'
@@ -38,16 +39,5 @@ export default function Register () {
           </form>
         </div>
     )
-}   else {
-        return (
-        <section className={Style.registered}>
-          <div className={Style.registered_login}>
-            <img src={icon} alt="icon" className={Style.register_icon} />
-            <h2>Successfully registered!</h2>
-            <p>Check your email to verify your user</p>
-            <button className={Style.login_button} onClick={() => navigate('/login')}>Login</button>
-          </div>
-        </section>
-    )
-}
+}   else return <Registered/>
 }
