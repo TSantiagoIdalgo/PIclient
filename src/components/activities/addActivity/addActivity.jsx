@@ -35,7 +35,7 @@ export default function AddActivity () {
     if (!state) {return (
         <div className={Style.background}>
             <form className={Style.activity_form} 
-            onSubmit={(e) => useOnSubmit(changeState, setError, inp, e)} autoComplete='off'>
+            onSubmit={(e) => useOnSubmit(changeState, setError, inp, decodedToken.email, e)} autoComplete='off'>
                 <h1>Create your activity</h1>
                 <img src={icon} alt="icon" className={Style.activity_form_icon}/>
 

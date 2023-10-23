@@ -1,8 +1,8 @@
 import axios from "axios"
 
-export const validateActivity = async (input) => {
+export const validateActivity = async (input, userId) => {
     let error = {}
-    const search = await axios.get(`https://piback-end.onrender.com/activities/${input.name}`)
+    const search = await axios.get(`https://piback-end.onrender.com/activities/${input.name}/${userId}`)
     if (input.name.length < 3) error.name = 'Name is too short'
     else if (input.name.length > 15) error.name = 'Name is too long'
     else if (/[^a-zA-Z]/.test(input.name)) error.name = 'The name must only include letters'
