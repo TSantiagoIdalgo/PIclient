@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { usePosition } from './hooks/app/usePosition'
+import { useState } from 'react'
 import Nav from './components/nav/nav'
 import Register from './components/register/register'
 import Login from './components/login/login'
@@ -14,28 +15,11 @@ import './App.css'
 function App() {
   const token = window.localStorage.getItem('USER_INFO')
   const [search, setSearch] = useState('')
-  const [mouseMovement, setMouseMove] = useState({
-    x: 0,
-    y: 0
-  })
-
-  useEffect(() => {
-    const mouseMove = (e) => {
-      setMouseMove({
-        x: e.pageX,
-        y: e.pageY
-      })
-    }
-
-    window.addEventListener('mousemove', mouseMove)
-    return () => {
-      window.removeEventListener('mousemove', mouseMove)
-    }
-  }, [mouseMovement])
+  const { X, Y } = usePosition()
 
   return (
     <div className='background'>
-      <div className='cursor' style={{background: `radial-gradient(circle at ${mouseMovement.x}px ${mouseMovement.y}px, rgba(79, 70, 229, 0.25), #010101 100%)`}}>
+      <div className='cursor' style={{background: `radial-gradient(circle at ${X}px ${Y}px, rgba(79, 70, 229, 0.25), #010101 100%)`}}>
       <Nav search={search} setSearch={setSearch}/>
         <Routes>
           <Route path='/' element={<Main/>}/>

@@ -1,19 +1,16 @@
-import { useState } from 'react'
+import { useHandle } from '../../../../hooks/commonHooks/useHandle'
 import Logged from '../../../../assets/icon/user/access.png'
 import UserInfo from '../../userInfo/userinfo'
 import Style from './isLogged.module.css'
 
 export default function IsLogged () {
-    const [user, handleUser] = useState(false)
-    function handler () {
-        user ? handleUser(false) : handleUser(true)
-    }
+    const { state, changeState } = useHandle()
     return (
       <div>
-        <button className={Style.login} onClick={handler}>
+        <button className={Style.login} onClick={changeState}>
             <img src={Logged} alt="logged" className={Style.logged_button}/>
         </button>
-        {user ? <UserInfo/> : null}
+        {state ? <UserInfo/> : null}
       </div>
     )
 }

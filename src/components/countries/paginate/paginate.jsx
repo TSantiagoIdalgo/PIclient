@@ -9,7 +9,7 @@ export default function Paginate ({currentPage, setCurrentPage, totalPages}) {
     })
     return (
         <div className={Style.paginate}>
-            {currentPage === 1 
+            {currentPage === 1 || currentPage === 0
             ? <button disabled className={Style.prev}>Prev</button> 
             : <button className={Style.prev} onClick={() => setCurrentPage(currentPage - 1)}>Prev</button>}
             <div className={Style.paginate_list}>

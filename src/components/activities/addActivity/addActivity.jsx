@@ -1,20 +1,15 @@
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getAllCountries } from '../../../redux/actions/actions'
-import { validateActivity } from './validates'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { useHandle } from '../../../hooks/commonHooks/useHandle'
+import { useOnSubmit } from '../../../hooks/addActivities/addActivity';
+import { UsefetchCountries } from '../../../services/countries/countries';
 import jwt_decode from 'jwt-decode';
-import axios from 'axios'
 import Style from './addActivity.module.css'
 import icon from '../../../assets/icon/icon.webp'
-import { useNavigate } from 'react-router-dom';
+
 export default function AddActivity () {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
     const token = window.localStorage.getItem('USER_INFO')
     const decodedToken = jwt_decode(token)
-    const state = useSelector(state => state.countries)
-    const [create, setCreate] = useState(false)
-    const [error, setError] = useState({})
     const [inp, setInp] = useState({
         id: [],
         name: '',
@@ -23,31 +18,23 @@ export default function AddActivity () {
         season: 'summer',
         userId: decodedToken.email
     })
-
-    async function onSubmit (e) {
-        e.preventDefault()
-        const errors = await validateActivity(inp)
-        if(Object.keys(errors).length === 0) {
-            await axios.post('https://piback-end.onrender.com/activities', inp)
-            setCreate(true)
-        }
-        setError(errors)
-    }
+    const { state, changeState } = useHandle()
+    const { error } = useOnSubmit(changeState, inp)
+    const { countries } = UsefetchCountries()
+    const navigate = useNavigate()
     function inputOnChange (e) {
         if (e.target.name === 'difficulty') {
             setInp({ ...inp, difficulty: parseInt(e.target.value)})
         } else if (e.target.name === 'country') {
             setInp({ ...inp, id: [...inp.id, e.target.value] })
-            const country = state.filter((c) => { return c.id == e.target.value })
+            const country = countries.filter((c) => { return c.id == e.target.value })
             alert(`País añadido: ${country[0].name}`)
         } else setInp({ ...inp, [e.target.name]: e.target.value})
     }
-    useEffect(() => {
-        dispatch(getAllCountries())
-    },[dispatch])
-    if (!create) {return (
+    
+    if (!state) {return (
         <div className={Style.background}>
-            <form className={Style.activity_form} onSubmit={onSubmit} autoComplete='off'>
+            <form className={Style.activity_form} onSubmit={(e) => e.preventDefault()} autoComplete='off'>
                 <h1>Create your activity</h1>
                 <img src={icon} alt="icon" className={Style.activity_form_icon}/>
 
@@ -79,7 +66,7 @@ export default function AddActivity () {
 
                 <select name="country" onChange={inputOnChange}>
                     <option value="">Countries</option>
-                    {state?.map((country) => (
+                    {countries?.map((country) => (
                         <option key={country.id} value={country.id}>{country.name}</option>
                     ))}
                 </select>

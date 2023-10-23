@@ -1,21 +1,11 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useGetCountry } from "../../../services/countries/country";
 import Loading from '../../../assets/icon/loading/loading.gif'
-import axios from "axios";
 import Style from './country.module.css'
 
 export default function Country () {
     const { id } = useParams()
-    const [country, setCountry] = useState({})
-    const [loading, setLoading] = useState(false)
-    useEffect(() => {
-        setLoading(true)
-        axios.get(`https://piback-end.onrender.com/country/${id}`).then(({ data }) => {
-            setCountry(data)
-        })
-        .finally(() => setLoading(false))
-    },[id])
-
+    const { loading, country } = useGetCountry(id)
     return (
       <div className={Style.background}>
         <figure className={Style.country}>
