@@ -19,7 +19,7 @@ export default function Register () {
     async function onSubmit () {
         const error = await validate(user)
         if (Object.keys(error).length === 0) {
-            await axios.post('https://piback-end.onrender.com/users', user)
+            await axios.post('http://localhost:3001/users', user)
             setRegister(true)
         }
         setErrors(error)
