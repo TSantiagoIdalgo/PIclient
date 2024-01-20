@@ -6,7 +6,7 @@ export const useGetCountry = (id) => {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        axios.get(`https://piback-end.onrender.com/country/${id}`).then(({ data }) => {
+        axios.get(`http://localhost:3001/country/${id}`).then(({ data }) => {
             setCountry(data)
         })
         .finally(() => setLoading(false))

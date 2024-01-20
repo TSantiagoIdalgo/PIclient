@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const validate = async (input) => {
     const error = {}
-    const search = await axios.get(`https://piback-end.onrender.com/users/${input.email}`)
+    const search = await axios.get(`http://localhost:3001/users/${input.email}`)
 
     if (input.userName.length <= 3) error.userName = 'Name is too short'
 
